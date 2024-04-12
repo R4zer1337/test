@@ -3,17 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Bar</title>
+  <title>Police Dispatch System</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="interactive-bar">
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Projects</li>
-      <li>Contact</li>
-    </ul>
+  <div id="login-container">
+    <h2>Police Dispatch System</h2>
+    <form id="login-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <div id="dispatch-container" style="display: none;">
+    <h2>Dispatch Center</h2>
+    <div id="employee-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Dienstnummer</th>
+            <th>Rank</th>
+            <th>Einstellungsdatum</th>
+            <th>Letzter Rangaufstieg</th>
+          </tr>
+        </thead>
+        <tbody>
+          </tbody>
+      </table>
+    </div>
   </div>
 
   <script src="script.js"></script>
