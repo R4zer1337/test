@@ -3,40 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dispatch Center</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Polizei-Leitstelle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"],
+        button {
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        li:hover {
+            background-color: #e9e9e9;
+        }
+        .delete {
+            float: right;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .delete:hover {
+            background-color: #bd2130;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Dispatch Center</h1>
 
-        <div class="incident-form">
-            <h2>Neuer Vorfall</h2>
-            <form id="incidentForm">
-                <label for="incidentType">Vorfallstyp:</label>
-                <select id="incidentType" name="incidentType">
-                    <option value="fire">Feuer</option>
-                    <option value="medical">Medizinischer Notfall</option>
-                    <option value="police">Polizeiliche Angelegenheit</option>
-                    <option value="other">Anderes</option>
-                </select>
+<div class="container">
+    <h2>Polizei-Leitstelle</h2>
+    <input type="text" id="callInput" placeholder="Neuer Notruf eingeben...">
+    <button onclick="addCall()">Notruf entgegennehmen</button>
+    <ul id="callList">
+        <!-- Hier werden die Notrufe eingefügt -->
+    </ul>
+</div>
 
-                <label for="incidentLocation">Ort des Vorfalls:</label>
-                <input type="text" id="incidentLocation" name="incidentLocation" required>
+<script>
+    function addCall() {
+        var callInput = document.getElementById("callInput");
+        var callText = callInput.value.trim();
 
-                <label for="incidentDescription">Beschreibung des Vorfalls:</label>
-                <textarea id="incidentDescription" name="incidentDescription" rows="5" required></textarea>
+        if (callText !== "") {
+            var callList = document.getElementById("callList");
+            var li = document.createElement("li");
+            li.textContent = callText;
+            
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "Löschen";
+            deleteButton.className = "delete";
+            deleteButton.onclick = function() {
+                li.parentNode.removeChild(li);
+            };
+            
+            li.appendChild(deleteButton);
+            callList.appendChild(li);
+            
+            callInput.value = "";
+        }
+    }
+</script>
 
-                <button type="submit">Senden</button>
-            </form>
-        </div>
-
-        <div class="incident-list">
-            <h2>Offene Vorfälle</h2>
-            <ul id="incidentList"></ul>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
