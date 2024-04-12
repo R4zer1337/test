@@ -1,0 +1,26 @@
+#interactive-bar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex; /* Makes elements display in a row */
+}
+
+#interactive-bar ul {
+  display: flex;
+  list-style: none; /* Removes default bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+#interactive-bar li {
+  padding: 10px;
+  cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+#interactive-bar li:hover {
+  background-color: #555;
+}
+
+#interactive-bar li.active { /* Style for active element (optional) */
+  background-color: #777;
+}
